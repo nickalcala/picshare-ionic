@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pictures</ion-title>
+    <ion-buttons end>
+      <button ion-button
+              icon-only
+              (click)="upload()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding
+             (ionScroll)="scrollHandler($event)">
+  <ion-card *ngFor="let p of pictures">
+    <img [src]="picturesBaseUrl + '/' + p.fileName" />
+    <ion-card-content>
+      <ion-card-title>
+        {{ p.title }}
+      </ion-card-title>
+      <p>
+        {{ p.description }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <div id="check-point"></div>
+</ion-content>

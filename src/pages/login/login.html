@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="loginForm"
+        (submit)="login()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="text"
+                   formControlName="email"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <form-error-message controlName="email"
+                            errorKey="required">Email is required.</form-error-message>
+        <form-error-message controlName="email"
+                            errorKey="email">Invalid email.</form-error-message>
+      </div>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password"
+                   formControlName="password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <form-error-message controlName="password"
+                            errorKey="required">Password is required.</form-error-message>
+      </div>
+    </ion-list>
+    <div padding>
+      <button type="submit"
+              ion-button
+              color="primary"
+              block>Sign In</button>
+    </div>
+  </form>
+</ion-content>

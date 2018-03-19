@@ -1,14 +1,30 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button
+            menuToggle
+            icon-only
+            *ngIf="isAuthenticated">
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>
-      Ionic Blank
+      Welcome
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div *ngIf="isAuthenticated">
+    <h1>Welcome</h1>
+    <button ion-button
+            block
+            (click)="viewPhotos()">View Photos</button>
+  </div>
+  <div *ngIf="!isAuthenticated">
+    <button ion-button
+            block
+            (click)="login()">Login</button>
+    <button ion-button
+            block
+            color="light"
+            (click)="register()">Register</button>
+  </div>
 </ion-content>

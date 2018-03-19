@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Upload Picture</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="uploadForm"
+        (submit)="upload()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text"
+                   formControlName="title"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <form-error-message controlName="title"
+                            errorKey="required">Title is required.</form-error-message>
+      </div>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea type="text"
+                      formControlName="description"></ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <form-error-message controlName="description"
+                            errorKey="required">Description is required.</form-error-message>
+      </div>
+      <div id="file-container">
+        <div>
+          <label ion-button
+                 icon-left
+                 for="file">
+            <ion-icon name="md-images"></ion-icon>
+            Select a file
+          </label>
+        </div>
+        <input type="file"
+               id="file"
+               ng2FileSelect
+               [uploader]="uploader"
+               (change)="onFileChange($event)" />
+      </div>
+      <div class="validation-errors">
+        <form-error-message controlName="file"
+                            errorKey="required">File is required.</form-error-message>
+      </div>
+    </ion-list>
+    <div padding>
+      <button type="submit"
+              ion-button
+              color="primary"
+              block>Upload</button>
+    </div>
+  </form>
+</ion-content>
